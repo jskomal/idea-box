@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './Header'
+import Form from './Form'
+import Ideas from './Ideas'
+
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      ideas: []
+    }
+  }
+
+  addIdea = (newIdea) => {
+    this.setState({ ideas: [...this.state.ideas, newIdea] })
+  }
+
+  deleteIdea = (id) => {
+    this.setState({ ideas: this.state.ideas.filter((idea) => idea.id !== id) })
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <Form addIdea={this.addIdea} />
+        <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea} />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
