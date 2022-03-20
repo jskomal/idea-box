@@ -35,6 +35,7 @@ class Form extends Component {
           type='text'
           name='title'
           placeholder='title'
+          value={this.state.title}
           onChange={this.handleTextInput}
         />
         <input
@@ -43,6 +44,7 @@ class Form extends Component {
           type='text'
           name='description'
           placeholder='description'
+          value={this.state.description}
           onChange={this.handleTextInput}
         />
         <button onClick={this.submitIdea} className='form-item form-button'>
